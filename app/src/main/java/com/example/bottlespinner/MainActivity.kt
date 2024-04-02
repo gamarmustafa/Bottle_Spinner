@@ -13,12 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -28,7 +25,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.bottlespinner.ui.theme.BottleSpinnerTheme
 import kotlin.random.Random
 
 class MainActivity :ComponentActivity(){
@@ -42,11 +38,11 @@ class MainActivity :ComponentActivity(){
 
 @Composable
 fun BottleSpinner() {
-    var rotation by remember { mutableStateOf(0f) }
+    var rotation by remember { mutableFloatStateOf(0f) }
     val interactionSource = remember { MutableInteractionSource() }
     val animatedRotation by animateFloatAsState(
         targetValue = rotation,
-        animationSpec = spring(10f,2000f)
+        animationSpec = spring(10f,2000f), label = ""
     )
 
     Box(
@@ -75,6 +71,6 @@ fun BottleSpinner() {
 
 @Preview
 @Composable
-fun preview() {
+fun Preview() {
     BottleSpinner()
 }
